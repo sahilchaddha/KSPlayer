@@ -21,7 +21,7 @@ let package = Package(
         .target(
             name: "KSPlayer",
             dependencies: [
-                .product(name: "FFmpegKit", package: "FFmpegKit"),
+                .product(name: "FFmpegKitPatch", package: "FFmpegKitPatch"),
 //                .product(name: "Libass", package: "FFmpegKit"),
 //                .product(name: "Libmpv", package: "FFmpegKit"),
                 "DisplayCriteria",
@@ -42,16 +42,16 @@ let package = Package(
     ]
 )
 
-var ffmpegKitPath = FileManager.default.currentDirectoryPath + "/FFmpegKit"
+var ffmpegKitPath = FileManager.default.currentDirectoryPath + "/FFmpegKitPatch"
 if !FileManager.default.fileExists(atPath: ffmpegKitPath) {
-    ffmpegKitPath = FileManager.default.currentDirectoryPath + "/../FFmpegKit"
+    ffmpegKitPath = FileManager.default.currentDirectoryPath + "/../FFmpegKitPatch"
 }
 
 if !FileManager.default.fileExists(atPath: ffmpegKitPath), let url = URL(string: #file) {
     let path = url.deletingLastPathComponent().path
     // 解决用xcode引入spm的时候，依赖关系出错的问题
     if !path.contains("/checkouts/") {
-        ffmpegKitPath = path + "/../FFmpegKit"
+        ffmpegKitPath = path + "/../FFmpegKitPatch"
     }
 }
 
@@ -61,6 +61,6 @@ if FileManager.default.fileExists(atPath: ffmpegKitPath + "/Package.swift") {
     ]
 } else {
     package.dependencies += [
-        .package(url: "https://github.com/kingslay/FFmpegKit.git", from: "6.1.3"),
+        .package(url: "https://github.com/sahilchaddha/FFmpegKitPatch.git", from: "6.1.3"),
     ]
 }

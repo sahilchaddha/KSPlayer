@@ -7,7 +7,7 @@
 
 import AVFoundation
 import CoreMedia
-import FFmpegKit
+import FFmpegKitPatch
 import Libavutil
 
 extension OSType {

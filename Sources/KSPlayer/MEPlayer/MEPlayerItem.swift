@@ -6,7 +6,7 @@
 //
 
 import AVFoundation
-import FFmpegKit
+import FFmpegKitPatch
 import Libavcodec
 import Libavfilter
 import Libavformat
